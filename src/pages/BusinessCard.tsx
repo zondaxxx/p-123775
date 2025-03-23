@@ -1,4 +1,3 @@
-
 import React, { useEffect } from "react";
 import { Github, Globe, Linkedin, Mail, Terminal, Zap } from "lucide-react";
 
@@ -151,8 +150,33 @@ const BusinessCard = () => {
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
         <div className="w-full max-w-[650px]">
-          <div className="relative backdrop-blur-sm bg-[rgba(5,15,35,0.6)] rounded-3xl border border-solid border-[rgba(0,122,255,0.3)] overflow-hidden p-8 shadow-[0_0_40px_rgba(0,122,255,0.2)]">
-            {/* Декоративные уголки */}
+          <div className="relative backdrop-blur-sm bg-[rgba(5,15,35,0.6)] rounded-3xl overflow-hidden p-8 shadow-[0_0_40px_rgba(0,122,255,0.2)]">
+            {/* Animated running border with glow effect */}
+            <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
+              <div className="absolute inset-0 bg-transparent border-[1px] border-[rgba(0,122,255,0)] rounded-3xl"></div>
+              
+              {/* Top running line */}
+              <div className="absolute top-0 left-0 h-[2px] w-full">
+                <div className="absolute top-0 left-[-100%] h-full w-full bg-gradient-to-r from-transparent via-[#007AFF] to-transparent animate-[border-run-x_3s_linear_infinite] shadow-[0_0_8px_#007AFF]"></div>
+              </div>
+              
+              {/* Right running line */}
+              <div className="absolute top-0 right-0 h-full w-[2px]">
+                <div className="absolute top-[-100%] right-0 h-full w-full bg-gradient-to-b from-transparent via-[#007AFF] to-transparent animate-[border-run-y_3s_linear_infinite_0.75s] shadow-[0_0_8px_#007AFF]"></div>
+              </div>
+              
+              {/* Bottom running line */}
+              <div className="absolute bottom-0 right-0 h-[2px] w-full">
+                <div className="absolute bottom-0 right-[-100%] h-full w-full bg-gradient-to-l from-transparent via-[#007AFF] to-transparent animate-[border-run-x-reverse_3s_linear_infinite_1.5s] shadow-[0_0_8px_#007AFF]"></div>
+              </div>
+              
+              {/* Left running line */}
+              <div className="absolute bottom-0 left-0 h-full w-[2px]">
+                <div className="absolute bottom-[-100%] left-0 h-full w-full bg-gradient-to-t from-transparent via-[#007AFF] to-transparent animate-[border-run-y-reverse_3s_linear_infinite_2.25s] shadow-[0_0_8px_#007AFF]"></div>
+              </div>
+            </div>
+            
+            {/* Keep the existing decorative corners, but remove the border since we have the running border now */}
             <div className="absolute w-10 h-10 rounded-[8px_0_0_0] border-l-2 border-t-2 border-solid border-[#007AFF] left-[21px] top-[21px] z-10 animate-pulse"></div>
             <div className="absolute w-10 h-10 rounded-[0_8px_0_0] border-r-2 border-t-2 border-solid border-[#007AFF] right-[21px] top-[21px] z-10 animate-pulse"></div>
             <div className="absolute w-10 h-10 rounded-[0_0_0_8px] border-l-2 border-b-2 border-solid border-[#007AFF] left-[21px] bottom-[21px] z-10 animate-pulse"></div>

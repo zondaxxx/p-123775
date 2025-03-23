@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -103,6 +102,22 @@ export default {
 					'0%': { transform: 'translateY(0px)' },
 					'50%': { transform: 'translateY(-10px)' },
 					'100%': { transform: 'translateY(0px)' }
+				},
+				'border-run-x': {
+					'0%': { transform: 'translateX(0%)' },
+					'100%': { transform: 'translateX(200%)' }
+				},
+				'border-run-x-reverse': {
+					'0%': { transform: 'translateX(0%)' },
+					'100%': { transform: 'translateX(-200%)' }
+				},
+				'border-run-y': {
+					'0%': { transform: 'translateY(0%)' },
+					'100%': { transform: 'translateY(200%)' }
+				},
+				'border-run-y-reverse': {
+					'0%': { transform: 'translateY(0%)' },
+					'100%': { transform: 'translateY(-200%)' }
 				}
 			},
 			animation: {
