@@ -1,8 +1,5 @@
-
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
 import { Github, Globe, Linkedin, Mail, Terminal, Zap } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 const BusinessCard = () => {
   // Эффект для создания анимированных частиц на фоне
@@ -129,14 +126,6 @@ const BusinessCard = () => {
         className="min-h-screen bg-[#2A2A4E] bg-opacity-95 flex items-center justify-center p-4"
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
-        <div className="absolute top-4 left-4">
-          <Link to="/">
-            <Button variant="outline" className="text-[#E6E6FF] border-[#AA79FD] hover:bg-[#AA79FD]/20">
-              Назад
-            </Button>
-          </Link>
-        </div>
-        
         <div className="w-full max-w-[650px]">
           <div className="relative backdrop-blur-sm bg-[rgba(255,255,255,0.05)] rounded-3xl border border-solid border-[rgba(255,255,255,0.10)] overflow-hidden animate-fade-in p-8">
             {/* Декоративные уголки */}
