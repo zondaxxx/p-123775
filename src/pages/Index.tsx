@@ -1,7 +1,10 @@
+
 import React from "react";
+import { Link } from "react-router-dom";
 import CertificateHeader from "@/components/certificates/CertificateHeader";
 import PricingCard from "@/components/certificates/PricingCard";
 import CertificateFooter from "@/components/certificates/CertificateFooter";
+import { Button } from "@/components/ui/button";
 
 const checkIcon = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="check-icon" style="width: 24px; height: 24px"> <path d="M20 6L9 17L4 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </svg>`;
 
@@ -52,6 +55,14 @@ const Index = () => {
         className="max-w-none min-h-screen relative overflow-hidden bg-[#2A2A4E] mx-auto p-12 max-md:max-w-[991px] max-md:p-6 max-sm:max-w-screen-sm max-sm:p-4"
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
+        <div className="absolute top-4 right-4 z-10">
+          <Link to="/business-card">
+            <Button className="bg-[#AA79FD] hover:bg-[#AA79FD]/80">
+              Визитка программиста
+            </Button>
+          </Link>
+        </div>
+
         <CertificateHeader
           title="Сертификаты разработчика"
           subtitle="Расшир��нные возможности для вашего iPhone и iPad"
