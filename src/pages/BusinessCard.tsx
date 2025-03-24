@@ -3,6 +3,21 @@ import React, { useEffect, useState } from "react";
 import { Github, Globe, Mail, Terminal, Zap, Copy, Check } from "lucide-react";
 import { toast } from "sonner";
 
+// Define the Particle class type outside the component
+interface Particle {
+  x: number;
+  y: number;
+  size: number;
+  speedX: number;
+  speedY: number;
+  color: string;
+  opacity: number;
+  pulse: boolean;
+  pulseRate: number;
+  update: () => void;
+  draw: () => void;
+}
+
 const BusinessCard = () => {
   const [emailCopied, setEmailCopied] = useState(false);
 
@@ -37,7 +52,7 @@ const BusinessCard = () => {
     const numberOfParticles = 150; // Increased number of particles
 
     // Класс для частиц
-    class Particle {
+    class ParticleClass implements Particle {
       x: number;
       y: number;
       size: number;
@@ -99,7 +114,7 @@ const BusinessCard = () => {
     // Инициализация частиц
     const init = () => {
       for (let i = 0; i < numberOfParticles; i++) {
-        particlesArray.push(new Particle());
+        particlesArray.push(new ParticleClass());
       }
     };
     init();
@@ -163,8 +178,8 @@ const BusinessCard = () => {
         className="min-h-screen w-full bg-black bg-opacity-95 flex items-center justify-center p-4"
         style={{ fontFamily: "'Unbounded', sans-serif" }}
       >
-        <div className="w-full max-w-[800px]"> {/* Increased max-width */}
-          <div className="relative backdrop-blur-sm bg-[rgba(5,15,35,0.6)] rounded-3xl overflow-hidden p-10 shadow-[0_0_40px_rgba(0,122,255,0.2)]"> {/* Increased padding */}
+        <div className="w-full max-w-[800px]"> 
+          <div className="relative backdrop-blur-sm bg-[rgba(5,15,35,0.6)] rounded-3xl overflow-hidden p-10 shadow-[0_0_40px_rgba(0,122,255,0.2)]"> 
             {/* Animated running border with glow effect */}
             <div className="absolute inset-0 z-0 overflow-hidden rounded-3xl">
               <div className="absolute inset-0 bg-transparent border-[1px] border-[rgba(0,122,255,0)] rounded-3xl"></div>
@@ -202,42 +217,42 @@ const BusinessCard = () => {
             
             <div className="relative z-10">
               {/* Верхняя часть визитки */}
-              <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mb-12"> {/* Increased gap and margin */}
+              <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-10 mb-12"> 
                 <div className="text-center md:text-left">
                   <div className="inline-flex items-center p-2 px-4 mb-4 bg-[#007AFF]/20 rounded-full backdrop-blur-md">
                     <Terminal className="w-4 h-4 mr-2 text-[#007AFF]" />
                     <span className="text-white text-sm">Full-Stack Developer</span>
                   </div>
-                  <h1 className="text-white text-5xl md:text-6xl font-bold mb-3 animate-[slideInRight_0.7s_ease-out_forwards]"> {/* Increased text size */}
+                  <h1 className="text-white text-5xl md:text-6xl font-bold mb-3 animate-[slideInRight_0.7s_ease-out_forwards]"> 
                     Zondaxxx
                   </h1>
-                  <p className="text-[#66a3ff] text-xl md:text-2xl animate-[fadeIn_0.7s_ease-out_0.3s_both]"> {/* Increased text size */}
+                  <p className="text-[#66a3ff] text-xl md:text-2xl animate-[fadeIn_0.7s_ease-out_0.3s_both]"> 
                     Создаю инновационные веб-решения
                   </p>
                 </div>
                 
                 <div className="relative group transition-all duration-300 hover:scale-105">
-                  <div className="w-[150px] h-[150px] rounded-xl bg-gradient-to-br from-[#0047AB] to-[#007AFF] flex items-center justify-center text-white text-6xl font-bold shadow-lg shadow-[#007AFF]/20 relative overflow-hidden"> {/* Increased size and text */}
+                  <div className="w-[150px] h-[150px] rounded-xl bg-gradient-to-br from-[#0047AB] to-[#007AFF] flex items-center justify-center text-white text-6xl font-bold shadow-lg shadow-[#007AFF]/20 relative overflow-hidden"> 
                     Z
                     <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-[rgba(0,122,255,0.2)] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
                     <span className="absolute -bottom-2 -right-2">
-                      <Zap className="w-8 h-8 text-[#007AFF] filter drop-shadow-[0_0_3px_rgba(0,122,255,0.8)]" /> {/* Increased icon size */}
+                      <Zap className="w-8 h-8 text-[#007AFF] filter drop-shadow-[0_0_3px_rgba(0,122,255,0.8)]" /> 
                     </span>
                   </div>
                 </div>
               </div>
               
               {/* Разделитель */}
-              <div className="h-[1px] bg-gradient-to-r from-transparent via-[rgba(0,122,255,0.4)] to-transparent my-8"></div> {/* Increased margin */}
+              <div className="h-[1px] bg-gradient-to-r from-transparent via-[rgba(0,122,255,0.4)] to-transparent my-8"></div> 
               
               {/* Навыки */}
-              <div className="mb-10 animate-[fadeIn_0.7s_ease-out_0.5s_both]"> {/* Increased margin */}
-                <h3 className="text-white text-2xl mb-5">Технические навыки</h3> {/* Increased text size and margin */}
-                <div className="flex flex-wrap gap-3"> {/* Increased gap */}
+              <div className="mb-10 animate-[fadeIn_0.7s_ease-out_0.5s_both]"> 
+                <h3 className="text-white text-2xl mb-5">Технические навыки</h3> 
+                <div className="flex flex-wrap gap-3"> 
                   {["Django", "HTML", "Node.js", "Python", "AWS", "Docker"].map((skill, index) => (
                     <span 
                       key={index} 
-                      className="px-4 py-2 bg-[rgba(5,15,35,0.7)] text-[#66a3ff] rounded-full text-base hover:bg-[#007AFF]/30 transition-all duration-300 cursor-default border border-[#007AFF]/20" {/* Increased padding and font size */}
+                      className="px-4 py-2 bg-[rgba(5,15,35,0.7)] text-[#66a3ff] rounded-full text-base hover:bg-[#007AFF]/30 transition-all duration-300 cursor-default border border-[#007AFF]/20"
                       style={{ 
                         animationDelay: `${700 + index * 100}ms`,
                         animation: 'fadeIn 0.5s ease-out forwards'
@@ -251,16 +266,16 @@ const BusinessCard = () => {
               
               {/* Контакты */}
               <div className="animate-[fadeIn_0.7s_ease-out_0.7s_both]">
-                <h3 className="text-white text-2xl mb-5">Свяжитесь со мной</h3> {/* Increased text size and margin */}
-                <div className="flex flex-wrap gap-6"> {/* Increased gap */}
+                <h3 className="text-white text-2xl mb-5">Свяжитесь со мной</h3> 
+                <div className="flex flex-wrap gap-6"> 
                   <a 
                     href="https://github.com/zondaxxx" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="text-[#66a3ff] hover:text-[#007AFF] transition-colors duration-300 flex items-center group"
                   >
-                    <Github className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> {/* Increased icon size */}
-                    <span className="relative overflow-hidden text-lg"> {/* Increased text size */}
+                    <Github className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> 
+                    <span className="relative overflow-hidden text-lg"> 
                       <span className="inline-block">github.com/zondaxxx</span>
                       <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#007AFF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                     </span>
@@ -269,8 +284,8 @@ const BusinessCard = () => {
                     onClick={() => copyToClipboard("zondaxxx@example.com")} 
                     className="text-[#66a3ff] hover:text-[#007AFF] transition-colors duration-300 flex items-center group"
                   >
-                    <Mail className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> {/* Increased icon size */}
-                    <span className="relative overflow-hidden text-lg flex items-center"> {/* Increased text size */}
+                    <Mail className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> 
+                    <span className="relative overflow-hidden text-lg flex items-center"> 
                       <span className="inline-block">zondaxxx@example.com</span>
                       {emailCopied ? (
                         <Check className="ml-2 w-5 h-5 text-green-500" />
@@ -286,8 +301,8 @@ const BusinessCard = () => {
                     rel="noopener noreferrer" 
                     className="text-[#66a3ff] hover:text-[#007AFF] transition-colors duration-300 flex items-center group"
                   >
-                    <Globe className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> {/* Increased icon size */}
-                    <span className="relative overflow-hidden text-lg"> {/* Increased text size */}
+                    <Globe className="mr-2 w-6 h-6 group-hover:scale-110 transition-transform" /> 
+                    <span className="relative overflow-hidden text-lg"> 
                       <span className="inline-block">zondaxxx.dev</span>
                       <span className="absolute bottom-0 left-0 w-full h-[1px] bg-[#007AFF] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"></span>
                     </span>
